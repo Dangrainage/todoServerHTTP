@@ -1,7 +1,7 @@
 # todoServerHTTP
 A small ToDo server written in ruby. Usable (and made for use) with curl.
 
-#Usage
+# Usage
 
 Write your tasks to a TODO.txt file that should be in the same directory as the server itself.
 After that just simply run the server using ruby. `ruby todoServerHTTP.rb`
