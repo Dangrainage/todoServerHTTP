@@ -10,8 +10,8 @@ password = "testpass"
 
 currentTime = Time.now.strftime("%H:%M:%S")
 
-if password.size > byteLimit
-  puts "Password too long! Please choose a shorter password"
+if password.size > byteLimit or userName.size > byteLimit
+  puts "Password or username too long! Please check that neither are longer than 24 characters!"
   exit(1)
 end
 
