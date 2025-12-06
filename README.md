@@ -9,4 +9,7 @@ After that just simply run the server using ruby. `ruby todoServerHTTP.rb`
 Client side, you should use curl to request your tasks like so `curl -d "<username> <password>" your.server.address`
 Ofcouse replacing the placeholders with your actual username, password and server address (don't forget to change the defaults!)
 
+There is also the `update` command which is utilized as such `curl -d "update" your.server.address`
+
+
 Enjoy!
