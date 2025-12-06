@@ -1,6 +1,7 @@
 require 'webrick'
 include WEBrick
 
+tasksLines = nil
 byteLimit = 24
 
 serverPort = 8989
@@ -16,7 +17,6 @@ if password.size > byteLimit or userName.size > byteLimit
 end
 
 
-tasksLines = File.read("TODO.txt")
 
 server = HTTPServer.new(:Port => serverPort)
 
@@ -26,23 +26,16 @@ server.mount_proc '/' do |request, response|
 
 
     if "#{request.body}".to_s == "#{userName} #{password}"
+      tasksLines = File.read("TODO.txt")
       response.status = 200
       response['Content-Type'] = 'text/plain'
-      response.body = "Hello #{userName} \n" + "It's #{currentTime} now \n \nYour tasks are: \n"  + tasksLines 
+      response.body = "Hello #{userName} \n" + "It's #{currentTime} now \n \nYour task(s) are: \n"  + tasksLines 
     else
       response.status = 401
       response['Content-Type'] = 'text/plain'
       response.body = "Username or password incorrect. Please check your spelling and try again. \n"
     end
-    
-    if "#{request.body}".to_s == "update"
-      tasksLines = nil
-      tasksLines = File.read("TODO.txt")      
-      response.status = 200
-      response['Content-Type'] = 'text/plain'
-      response.body = "Task list updated \n"
-    end 
-    
+        
 end
 
 
