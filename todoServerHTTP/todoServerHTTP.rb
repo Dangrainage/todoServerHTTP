@@ -34,6 +34,15 @@ server.mount_proc '/' do |request, response|
       response['Content-Type'] = 'text/plain'
       response.body = "Username or password incorrect. Please check your spelling and try again. \n"
     end
+    
+    if "#{request.body}".to_s == "update"
+      tasksLines = nil
+      tasksLines = File.read("TODO.txt")      
+      response.status = 200
+      response['Content-Type'] = 'text/plain'
+      response.body = "Task list updated \n"
+    end 
+    
 end
 
 
